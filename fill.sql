@@ -79,5 +79,3 @@ begin
 	
 end $$
 delimiter ;
-
-call fillTable(5, 'user');
