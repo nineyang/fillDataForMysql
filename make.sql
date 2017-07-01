@@ -24,20 +24,18 @@ begin
 		deallocate prepare stmt;
 		
 		set @currNum = @currNum + 1;
-		
-		insert into user values(default , @tableName , @currNum);
-		
+				
 -- 对当前表做optimize 索引碎片整理
-		/* set @optimizeSql = "optimize table ?";
+		 set @optimizeSql = "optimize table ?";
 		prepare stmt from @optimizeSql;
 		execute stmt using @tableName;
-		deallocate prepare stmt; */
+		deallocate prepare stmt; 
 		
 -- 对当前表做analyze 	修复索引散列
-		/* set @analyzeSql = "analyze table ?";
+		 set @analyzeSql = "analyze table ?";
 		prepare stmt from @analyzeSql;
 		execute stmt using @tableName;
-		deallocate prepare stmt; */
+		deallocate prepare stmt; 
 		
 	end while;
 end $$
