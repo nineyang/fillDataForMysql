@@ -1,10 +1,10 @@
 -- 开启定时任务
 set global event_scheduler =1; 
 
--- 设置定时任务
+-- 设置定时任务(每个月1号凌晨3点执行)
 drop event if exists clearDB;
 create event clearDB
-on schedule every 5 second
+on schedule every 1 month starts date_add(date_add(date_sub(curdate(),interval day(curdate())-1 day),interval 1 month),interval 3 hour)
 on completion preserve disable
 do call clearTable();
 
